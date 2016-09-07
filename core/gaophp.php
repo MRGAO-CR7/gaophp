@@ -10,6 +10,8 @@ namespace core;
 class gaophp
 {
     public static $classMap = array();
+    public $assign;
+    
     static public function run() {
         $route = new \core\lib\route();
         $ctrlClass = $route->ctrl;
@@ -38,6 +40,20 @@ class gaophp
                 return false;
             }
         }        
+    }
+    
+    public function assign($name, $value) {
+        $this->assign[$name] = $value;
+    }
+    
+    public function display($file) {
+        $file = APP.'/views/'.$file;
+        
+        extract($this->assign);
+        //pr($this->assign);exit;
+        if(is_file($file)) {
+            include $file;
+        }
     }
 }
 
