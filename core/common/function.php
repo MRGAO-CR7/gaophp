@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-function p($var) {
+function pr($var) {
     if(is_bool($var)) {
         var_dump($var);
     } else if(is_null($var)) {

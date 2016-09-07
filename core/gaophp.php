@@ -12,6 +12,18 @@ class gaophp
     public static $classMap = array();
     static public function run() {
         $route = new \core\lib\route();
+        $ctrlClass = $route->ctrl;
+        $action = $route->action;
+        
+        $ctrlFile = APP.'/ctrl/'.$ctrlClass.'Ctrl.php';
+        $ctrlClass = '\\'.MODULE.'\ctrl\\'.$ctrlClass.'Ctrl';
+        if(is_file($ctrlFile)) {
+            include $ctrlFile;
+            $ctrl = new $ctrlClass();
+            $ctrl->$action();
+        } else {
+            throw new \Exception('Can not find the controller: '.$classCtrl);
+        }
     }
     
     static public function load($class) {

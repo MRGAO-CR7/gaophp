@@ -8,6 +8,7 @@ define('GAOPHP',  realpath('./'));
 define('CORE', GAOPHP.'/core');
 define('APP', GAOPHP.'/app');
 
+define('MODULE', 'app');
 define('DEBUG', true);
 
 if(DEBUG) {
